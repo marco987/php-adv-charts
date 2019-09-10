@@ -6,9 +6,17 @@
   list-style: none;
 }
 
-.container {
+#container {
   width: 100vw;
   height: 100vh;
-  padding: 50px 25px;
+  padding: 50px;
   overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#graficoVendite {
+  width: 600px;
+  height: 400px;
 }

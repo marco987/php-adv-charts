@@ -5,9 +5,9 @@
     <!-- FONT: LATO -->
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
     <!-- FONT: FONTAWESOME -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+    <link href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" rel="stylesheet">
     <!-- JS: JQUERY -->
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js" type="text/javascript"></script>
     <!-- JS: MOMENT -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.min.js"></script>
     <!-- JS: CHART -->
@@ -20,14 +20,18 @@
     <!-- CSS: MY STYLE -->
     <link rel="stylesheet" href="style.css">
     <!-- JS: MY SCRIPT -->
-    <script src="script.js" charset="utf-8"></script>
+    <script src="script.js"></script>
     <!-- IMG: ICON -->
     <link rel="shortcut icon" href="img/me_icon.gif">
     <title>TITOLO</title>
   </head>
 
   <body>
+    <div id="container">
 
+      <canvas id="graficoVendite"></canvas>
+
+    </div>
   </body>
 
 </html>
