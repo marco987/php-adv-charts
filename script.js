@@ -41,7 +41,7 @@ $(document).ready(function(){
 //   return moment.months();
 // }
 //
-// // -----
+// // ----------
 // // Step 2 - Grafico Fatturato
 //
 // function getFatturato() {
@@ -83,17 +83,28 @@ $(document).ready(function(){
 //   });
 // }
 
-// -----
+// ----------
 // Step 3 - Grafico Efficienza Team
 //          e controllo livello di accesso
 // URL: http://localhost/index.php?level=livello
 //      livello: clevel , employee , guest
 
+// LIVELLO DI ACCESSO
+// Leggo l'url
+var url = $(location).attr('href');
+// Divido la stringa url e genero così un array
+var urlSplit = url.split("http://localhost/index.php?level=");
+// Leggo il secondo valore dell'array, che è la chiave d'accesso
+var access = urlSplit[1];
+
 function getEfficienza() {
+
   $.ajax({
     url: "api3.php",
     method: "GET",
+    data: {level:access},
     success: function(data){
+      // Con accesso "clevel" data rappresenta tre array
       console.log(data);
     },
     error: function(){

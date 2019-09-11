@@ -23,7 +23,7 @@
     <script src="script.js"></script>
     <!-- IMG: ICON -->
     <link rel="shortcut icon" href="img/me_icon.gif">
-    <title>TITOLO</title>
+    <title>Grafici Azienda</title>
   </head>
 
   <body>
@@ -38,7 +38,7 @@
       <div>
         <canvas id="efficienzaTeam"></canvas>
       </div>
-      
+
     </div>
   </body>
 

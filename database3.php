@@ -1,7 +1,5 @@
 <?php
 
-header('Content-type: application/json');
-
 $graphs = [
   'fatturato' => [
     'type' => 'line',
@@ -28,8 +26,5 @@ $graphs = [
     'access' => 'clevel'
   ],
 ];
-
-echo json_encode($graphs);
-
 
 ?>
