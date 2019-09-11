@@ -97,15 +97,30 @@ var urlSplit = url.split("http://localhost/index.php?level=");
 // Leggo il secondo valore dell'array, che è la chiave d'accesso
 var access = urlSplit[1];
 
-function getEfficienza() {
+// Dichiaro array vuoti dove mettere
+// i dati in base all'accesso
+
+var datiGuest = [];
+var datiEmployee = [];
+var datiClevel = [];
+
+function getAccess() {
 
   $.ajax({
     url: "api3.php",
     method: "GET",
     data: {level:access},
     success: function(data){
-      // Con accesso "clevel" data rappresenta tre array
-      console.log(data);
+
+      var dataTOT = data;
+
+      if (access == "guest") {
+        return datiGuest.push(dataTOT);
+      } else if (access == "employee") {
+        return datiEmployee.push(dataTOT);
+      } else if (access == "clevel") {
+        return datiClevel.push(dataTOT);
+      }
     },
     error: function(){
       alert("Errore");
@@ -115,14 +130,11 @@ function getEfficienza() {
 
 
 
-
-
-
-
 // Richiamo funzioni
 // getVendite();
 // getFatturato();
-getEfficienza();
+getAccess();
+
 
 
 });
