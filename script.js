@@ -1,6 +1,8 @@
 $(document).ready(function(){
 
-function printGraficoLinea(vendite) {
+// Step 1 - Grafico Vendite
+
+function printGraficoVendite(vendite) {
   var graficoVendite = $("#graficoVendite");
 
   getMesi();
@@ -22,13 +24,12 @@ function printGraficoLinea(vendite) {
   });
 }
 
-
 function getVendite() {
   $.ajax({
     url: "api1.php",
     method: "GET",
     success: function(vendite){
-      printGraficoLinea(vendite)
+      printGraficoVendite(vendite)
     },
     error: function(){
       alert("Errore");
@@ -40,7 +41,51 @@ function getMesi() {
   return moment.months();
 }
 
+// -----
+// Step 2 - Grafico Fatturato
+
+function getFatturato() {
+  $.ajax({
+    url: "api2.php",
+    method: "GET",
+    success: function(data, type, nomi, fatturato){
+      var type = data.fatturato_by_agent.type;
+      var nomi_fatturato = data.fatturato_by_agent.data;
+      var nomi = Object.keys(nomi_fatturato);
+      var fatturato = Object.values(nomi_fatturato);
+      printGraficoFatturato(data, type, nomi, fatturato);
+    },
+    error: function(){
+      alert("Errore");
+    }
+  });
+}
+
+function printGraficoFatturato(data, type, nomi, fatturato) {
+  var fatturatoAgenti = $("#fatturatoAgenti");
+
+  var grafico2 = new Chart(fatturatoAgenti, {
+    type: type,
+    data: {
+      labels: nomi,
+      datasets: [{
+        label: 'Fatturato per agente',
+        data: fatturato,
+        borderColor: "red",
+        backgroundColor: [
+          'yellow',
+          'yellow',
+          'yellow',
+          'yellow'
+        ]
+      }]
+    }
+  });
+}
+
+// Richiamo funzioni
 getVendite();
+getFatturato();
 
 
 
