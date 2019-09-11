@@ -1,5 +1,7 @@
 <?php
 
+header('Content-type: application/json');
+
 $graphs = [
   'fatturato' => [
     'type' => 'line',
@@ -15,5 +17,8 @@ $graphs = [
       ]
     ]
   ];
+
+echo json_encode($graphs);
+
 
 ?>

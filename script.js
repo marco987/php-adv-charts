@@ -3,10 +3,13 @@ $(document).ready(function(){
 function printGraficoLinea(vendite) {
   var graficoVendite = $("#graficoVendite");
 
+  getMesi();
+  var mesi = getMesi();
+
   var grafico1 = new Chart(graficoVendite, {
     type: 'line',
     data: {
-      labels: ["Gennaio", "Febbraio", "Marzo", "Aprile", "Maggio", "Giugno", "Luglio", "Agosto", "Settembre", "Ottobre", "Novembre", "Dicembre"],
+      labels: mesi,
       datasets: [{
         label: 'Vendite',
         data: vendite,
@@ -22,7 +25,7 @@ function printGraficoLinea(vendite) {
 
 function getVendite() {
   $.ajax({
-    url: "database1.php",
+    url: "api1.php",
     method: "GET",
     success: function(vendite){
       printGraficoLinea(vendite)
@@ -33,8 +36,11 @@ function getVendite() {
   });
 }
 
-getVendite();
+function getMesi() {
+  return moment.months();
+}
 
+getVendite();
 
 
 

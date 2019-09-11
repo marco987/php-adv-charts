@@ -14,9 +14,5 @@
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-#graficoVendite {
-  width: 600px;
-  height: 400px;
+  flex-wrap: wrap;
 }

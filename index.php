@@ -29,8 +29,16 @@
   <body>
     <div id="container">
 
-      <canvas id="graficoVendite"></canvas>
-
+      <div>
+        <canvas id="graficoVendite"></canvas>
+      </div>
+      <div>
+        <canvas id="fatturatoAgenti"></canvas>
+      </div>
+      <div>
+        <canvas id="efficienzaTeam"></canvas>
+      </div>
+      
     </div>
   </body>
 
