@@ -1,59 +1,100 @@
 $(document).ready(function(){
 
-// Step 1 - Grafico Vendite
-
-function printGraficoVendite(vendite) {
-  var graficoVendite = $("#graficoVendite");
-
-  getMesi();
-  var mesi = getMesi();
-
-  var grafico1 = new Chart(graficoVendite, {
-    type: 'line',
-    data: {
-      labels: mesi,
-      datasets: [{
-        label: 'Vendite',
-        data: vendite,
-        borderColor: "red",
-        backgroundColor: [
-          'green'
-        ]
-      }]
-    }
-  });
-}
-
-function getVendite() {
-  $.ajax({
-    url: "api1.php",
-    method: "GET",
-    success: function(vendite){
-      printGraficoVendite(vendite)
-    },
-    error: function(){
-      alert("Errore");
-    }
-  });
-}
-
-function getMesi() {
-  return moment.months();
-}
+// // Step 1 - Grafico Vendite
+//
+// function printGraficoVendite(vendite) {
+//   var graficoVendite = $("#graficoVendite");
+//
+//   getMesi();
+//   var mesi = getMesi();
+//
+//   var grafico1 = new Chart(graficoVendite, {
+//     type: 'line',
+//     data: {
+//       labels: mesi,
+//       datasets: [{
+//         label: 'Vendite',
+//         data: vendite,
+//         borderColor: "red",
+//         backgroundColor: [
+//           'green'
+//         ]
+//       }]
+//     }
+//   });
+// }
+//
+// function getVendite() {
+//   $.ajax({
+//     url: "api1.php",
+//     method: "GET",
+//     success: function(vendite){
+//       printGraficoVendite(vendite)
+//     },
+//     error: function(){
+//       alert("Errore");
+//     }
+//   });
+// }
+//
+// function getMesi() {
+//   return moment.months();
+// }
+//
+// // -----
+// // Step 2 - Grafico Fatturato
+//
+// function getFatturato() {
+//   $.ajax({
+//     url: "api2.php",
+//     method: "GET",
+//     success: function(data, type, nomi, fatturato){
+//       var type = data.fatturato_by_agent.type;
+//       var nomi_fatturato = data.fatturato_by_agent.data;
+//       var nomi = Object.keys(nomi_fatturato);
+//       var fatturato = Object.values(nomi_fatturato);
+//       printGraficoFatturato(data, type, nomi, fatturato);
+//     },
+//     error: function(){
+//       alert("Errore");
+//     }
+//   });
+// }
+//
+// function printGraficoFatturato(data, type, nomi, fatturato) {
+//   var fatturatoAgenti = $("#fatturatoAgenti");
+//
+//   var grafico2 = new Chart(fatturatoAgenti, {
+//     type: type,
+//     data: {
+//       labels: nomi,
+//       datasets: [{
+//         label: 'Fatturato per agente',
+//         data: fatturato,
+//         borderColor: "red",
+//         backgroundColor: [
+//           'yellow',
+//           'yellow',
+//           'yellow',
+//           'yellow'
+//         ]
+//       }]
+//     }
+//   });
+// }
 
 // -----
-// Step 2 - Grafico Fatturato
+// Step 3 - Grafico Efficienza Team
+//          e controllo livello di accesso
+// URL: http://localhost/index.php?level=livello
+//      livello: clevel , employee , guest
 
-function getFatturato() {
+function getEfficienza() {
   $.ajax({
-    url: "api2.php",
+    url: "api3.php",
     method: "GET",
-    success: function(data, type, nomi, fatturato){
-      var type = data.fatturato_by_agent.type;
-      var nomi_fatturato = data.fatturato_by_agent.data;
-      var nomi = Object.keys(nomi_fatturato);
-      var fatturato = Object.values(nomi_fatturato);
-      printGraficoFatturato(data, type, nomi, fatturato);
+    success: function(data){
+      console.log(data);
     },
     error: function(){
       alert("Errore");
@@ -61,32 +102,16 @@ function getFatturato() {
   });
 }
 
-function printGraficoFatturato(data, type, nomi, fatturato) {
-  var fatturatoAgenti = $("#fatturatoAgenti");
 
-  var grafico2 = new Chart(fatturatoAgenti, {
-    type: type,
-    data: {
-      labels: nomi,
-      datasets: [{
-        label: 'Fatturato per agente',
-        data: fatturato,
-        borderColor: "red",
-        backgroundColor: [
-          'yellow',
-          'yellow',
-          'yellow',
-          'yellow'
-        ]
-      }]
-    }
-  });
-}
+
+
+
+
 
 // Richiamo funzioni
-getVendite();
-getFatturato();
-
+// getVendite();
+// getFatturato();
+getEfficienza();
 
 
 });
