@@ -105,25 +105,78 @@ function getAccess() {
     data: {level:access},
     success: function(dataTOT){
 
-      if(dataTOT.fatturato) {
+      if (dataTOT.fatturato) {
         printGraficoVendite(dataTOT.fatturato.data)
       }
 
-      if(dataTOT.fatturato_by_agent) {
+      if (dataTOT.fatturato_by_agent) {
         var type = dataTOT.fatturato_by_agent.type;
         var nomi_fatturato = dataTOT.fatturato_by_agent.data;
         var nomi = Object.keys(nomi_fatturato);
         var fatturato = Object.values(nomi_fatturato);
-        console.log(dataTOT, type, nomi, fatturato);
+
         printGraficoFatturato(dataTOT, type, nomi, fatturato);
       }
 
+      if (dataTOT.team_efficiency) {
+
+        printGraficoTeam(dataTOT);
+      }
 
     },
     error: function(){
       alert("Errore");
     }
   });
+}
+
+function printGraficoTeam(dataTOT) {
+  var efficienzaTeam = $("#efficienzaTeam");
+
+  var dataTeam1 = dataTOT.team_efficiency.data.Team1;
+  var dataTeam2 = dataTOT.team_efficiency.data.Team2;
+  var dataTeam3 = dataTOT.team_efficiency.data.Team3;
+
+  var team1 = {
+    label: "Team1",
+    data: dataTeam1,
+    borderColor: 'orange',
+    backgroundColor: 'rgba(204,204,204,0.2)',
+    borderWidth: 5,
+    hoverBorderWidth: 10
+  }
+
+  var team2 = {
+    label: "Team2",
+    data: dataTeam2,
+    borderColor: 'green',
+    backgroundColor: 'rgba(204,204,204,0.2)',
+    borderWidth: 5,
+    hoverBorderWidth: 10
+  }
+
+  var team3 = {
+    label: "Team3",
+    data: dataTeam3,
+    borderColor: 'red',
+    backgroundColor: 'rgba(204,204,204,0.2)',
+    borderWidth: 5,
+    hoverBorderWidth: 10
+  }
+
+  getMesi();
+  var mesi = getMesi();
+
+  var graficoEfficienze = {
+    labels: mesi,
+    datasets: [team1, team2, team3]
+  }
+
+  var grafico3 = new Chart(efficienzaTeam, {
+    type: "line",
+    data: graficoEfficienze
+  });
+
 }
 
 // Richiamo funzioni
