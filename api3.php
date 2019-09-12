@@ -12,16 +12,16 @@ $chiaveFatturato_by_agent = $graphs["fatturato_by_agent"];
 
 if ($level == "clevel") {
 
-  $datiCriptati[] = $graphs;
+  $datiCriptati = $graphs;
 
 } else if ($level == "employee") {
 
-  $datiCriptati[] = $chiaveFatturato;
-  $datiCriptati[] = $chiaveFatturato_by_agent;
+  $datiCriptati["fatturato"] = $chiaveFatturato;
+  $datiCriptati["fatturato_by_agent"] = $chiaveFatturato_by_agent;
 
 } else if ($level == "guest") {
 
-  $datiCriptati[] = $chiaveFatturato;
+  $datiCriptati["fatturato"] = $chiaveFatturato;
 
 }
 

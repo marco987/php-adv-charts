@@ -115,12 +115,14 @@ function getAccess() {
       var dataTOT = data;
 
       if (access == "guest") {
-        return datiGuest.push(dataTOT);
+        datiGuest.push(dataTOT);
       } else if (access == "employee") {
-        return datiEmployee.push(dataTOT);
+        datiEmployee.push(dataTOT);
       } else if (access == "clevel") {
-        return datiClevel.push(dataTOT);
+        datiClevel.push(dataTOT);
       }
+
+      var guestGraph = datiGuest[0][0];
     },
     error: function(){
       alert("Errore");
@@ -131,9 +133,11 @@ function getAccess() {
 
 
 // Richiamo funzioni
+
 // getVendite();
 // getFatturato();
 getAccess();
+// print();
 
 
 
